@@ -1,0 +1,34 @@
+{
+    "name":"getgrass-app_v1",
+    "version":"1.0.0",
+    "description":"Get Grass",
+    "main":"main.js",
+    "type":"module",
+    "bin": "main.js",
+    "scripts":{
+        "start":"node main.js",
+        "mini": "esbuild main.js --bundle --platform=node --target=node16 --minify --format=cjs  --outfile=bundle.js",
+        "package-win": "npm run mini && pkg bundle.js --targets node16-win-x64 --output getgrass-app_v2_public.exe",
+        "package-linux": "npm run mini && pkg bundle.js --targets node16-linux-x64 --output getgrass-app_v2_public"
+    },
+    "dependencies":{
+        "events":"^3.3.0",
+        "https-proxy-agent":"^7.0.6",
+        "node-fetch":"^3.3.2",
+        "uuid":"^11.1.0",
+        "ws":"^8.18.1"
+    },
+
+    "pkg": {
+        "assets": [
+            "app.js",
+            "auth.js"
+
+        ],
+        "targets": [
+            "node16-win-x64"
+        ]
+    },
+    "author":"2movn",
+    "license":"MIT"
+}
